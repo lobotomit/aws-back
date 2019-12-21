@@ -1,0 +1,5 @@
+###
+GET {{host}}//api/v1/item
+Accept: application/json
+
+###
