@@ -7,7 +7,58 @@
     <groupId>com.ereyesalvarez.aws.calculator</groupId>
     <artifactId>app</artifactId>
     <version>0.1</version>
-    <packaging>war</packaging>
+    <packaging>${packaging.type}</packaging>
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <packaging.type>jar</packaging.type>
+                <spring.profiles.active>local</spring.profiles.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <packaging.type>war</packaging.type>
+                <spring.profiles.active>dev</spring.profiles.active>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>int</id>
+            <properties>
+                <packaging.type>war</packaging.type>
+                <spring.profiles.active>int</spring.profiles.active>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>pro</id>
+            <properties>
+                <packaging.type>war</packaging.type>
+                <spring.profiles.active>pro</spring.profiles.active>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
