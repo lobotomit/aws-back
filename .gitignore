@@ -1,0 +1,17 @@
+**.iml
+.idea
+
+# Maven
+/target
+
+# IntellIj
+.idea/
+*.iml
+
+# Eclipse
+.classpath
+.project
+/.settings
+*.factorypath
+
+src/main/resources/application-local.properties
