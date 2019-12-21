@@ -5,7 +5,10 @@ import lombok.Data;
 
 @Data
 public class ItemTypeOut {
+    private Long id;
     private String title;
     private ItemSize size;
     private Double price;
+    private Long itemClassId;
+    private String itemClassTitle;
 }
