@@ -21,16 +21,27 @@ public class ItemController {
     private final ItemService itemService;
 
     @GetMapping("")
-    public ResponseEntity getItems() {
+    public ResponseEntity<?> getItems() {
         List<ItemOut> response = itemService.getAll();
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
     @PostMapping("")
-    public ResponseEntity createItem(@RequestBody ItemIn source){
+    public ResponseEntity<?> createItem(@RequestBody ItemIn source){
         ErrorOut errorOut = itemService.validateCreateItem(source);
         if(errorOut != null){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorOut);
         }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorOut);
+        itemService.createItem(source);
+        return ResponseEntity.status(HttpStatus.OK).body(new ErrorOut(0,"Ok"));
     }
+    @PutMapping("")
+    public ResponseEntity<?> updateItem(@RequestBody ItemIn source){
+        ErrorOut errorOut = itemService.validateUpdateItem(source);
+        if(errorOut != null){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorOut);
+        }
+        itemService.createItem(source);
+        return ResponseEntity.status(HttpStatus.OK).body(new ErrorOut(0,"Ok"));
+    }
+
 }
