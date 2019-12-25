@@ -22,6 +22,10 @@ public class ItemCRUDService {
     private final ItemRepository itemRepository;
     private final ItemTypeRepository itemTypeRepository;
 
+    public boolean itemDontExist(Long id){
+        return !itemExist(id);
+    }
+
     public boolean itemExist(Long id) {
         Optional<Item> item = itemRepository.findById(id);
         return item.isPresent();

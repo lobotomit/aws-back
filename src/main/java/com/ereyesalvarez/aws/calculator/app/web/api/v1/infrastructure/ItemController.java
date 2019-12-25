@@ -28,7 +28,7 @@ public class ItemController {
 
     @GetMapping("{itemId}")
     public ResponseEntity<?> getOneItem(@PathVariable("itemId") Long itemId){
-        if(!itemCRUDService.itemExist(itemId)){
+        if(itemCRUDService.itemDontExist(itemId)){
             return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(new ErrorOut(207, "Item not found"));
@@ -47,7 +47,7 @@ public class ItemController {
     }
     @PutMapping("")
     public ResponseEntity<?> updateItem(@RequestBody ItemIn source){
-        if(!itemCRUDService.itemExist(source.getId())){
+        if(itemCRUDService.itemDontExist(source.getId())){
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(new ErrorOut(207, "Item not found"));
         }
